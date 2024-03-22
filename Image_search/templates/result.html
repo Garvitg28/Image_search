@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        {% if 'data:image/' in result %}
+            <img src="{{ result }}" style="max-width: 100%;">
+        {% else %}
+            <p>{{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

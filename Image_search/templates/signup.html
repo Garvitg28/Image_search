@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <h2 class="text-3xl font-bold mb-4 text-center text-blue-500">SignUp</h2>
+            <form action="/signup" method="post" class="space-y-4">
+                <div>
+                    <label for="username" class="block text-gray-700 text-sm font-medium">Username:</label>
+                    <input type="text" name="username" id="username" class="w-full p-2 border rounded-sm focus:ring focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-gray-700 text-sm font-medium">Password:</label>
+                    <input type="password" name="password" id="password" class="w-full p-2 border rounded-sm focus:ring focus:border-blue-500" required>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:ring focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer">Signup</button>
+                </div>
+            </form>
+            <p class="mt-3 text-center">Already have an account? <a href="/login" class="text-blue-500">Login here</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

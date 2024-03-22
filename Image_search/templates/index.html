@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FabriSearch</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex justify-between items-center p-4 bg-blue-500 text-white">
+        <div class="ml-auto">
+            {% if 'username' in session %}
+            <a href="{{ url_for('logout') }}" class="text-sm hover:underline">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-5/6">
+            <h1 class="text-4xl font-extrabold text-blue-500 text-center mb-4">FabriSearch</h1>
+            <p class="text-2xl font-italic text-blue-500 text-center mb-4">powered by intelliM</p>
+
+           
+           
+            <br>
+           
+
+            <form method="POST" action="/index" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="file" class="block text-gray-700 text-sm font-medium">Upload Image:</label>
+                    <input type="file" name="file" id="file"
+                        class="w-full p-2 border rounded focus:ring focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="text" class="block text-gray-700 text-sm font-medium">Enter Text:</label>
+                    <input type="text" name="text" id="text"
+                        class="w-full p-2 border rounded focus:ring focus:border-blue-500">
+                </div>
+                <div class="mt-4">
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:ring focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer">
+                        Search
+                    </button>
+                </div>
+            </form>
+
+            <h2 class="mt-6 text-2xl font-semibold text-gray-700">Your Query:</h2>
+ <!-- Display the uploaded image if it exists -->
+ {% if image_file_url %}
+ <div class="flex items-center justify-center mt-4">
+     <img src="{{ image_file_url }}" alt="Uploaded Image" class="max-w-full rounded-lg">
+ </div>  
+ {% endif %}
+
+ <h2 class="mt-4 text-2xl font-semibold text-gray-700">Matching Images:</h2>
+ <div class="grid grid-cols-3 gap-4 mt-2">
+     {% for image in image_data %}
+     <div class="bg-white rounded-lg shadow p-4 text-center">
+         <div class="flex items-center justify-center"> 
+             <img src="{{ image.url }}" alt="Result Image" class="rounded-lg">
+         </div>
+         <p class="text-gray-600 mt-2 text-sm text-base-caption-size">{{ image.caption }}</p>
+     </div>
+     {% endfor %}
+ </div>
+        </div>
+    </div>
+</body>
+
+</html>
